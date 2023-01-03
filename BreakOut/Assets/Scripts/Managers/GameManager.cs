@@ -12,17 +12,21 @@ public class GameManager : BaseBehaviour // Manages the whole game
             if (instance == null)
             {
                 GameObject go = GameObject.Find("GameManager");
+                instance = go.GetComponent<GameManager>();
             }
             return instance;
         }
     }
+    public const int START_LIVES = 3;
+    public const int MAX_LIVES = 99;
     public GameObject backgroundPrefab;
     public GameObject paddlePrefab;
     public GameObject wallColliderPrefab;
-
+    public GameObject uiManagerPrefab;
     private GameObject backgroundObj;
     private GameObject paddleObj;
     private GameObject wallColliderObj;
+    public GameObject uiManagerObj;
     public LevelBackground levelBackground;
 
     public void Start()
@@ -30,11 +34,18 @@ public class GameManager : BaseBehaviour // Manages the whole game
         GetBackgroundObj();
         GetLevelBackground();
         SetBackgroundImage();
+        InstantiatePrefabObjects();
         BrickMapper.Instance.InstantiateBrickPool();
         BrickMapper.Instance.LoadAllLevels(LevelManager.MAX_LEVELS, LevelManager.LEVEL_PREFIX);
+        LevelManager.Instance.SetBricksForCurrentLevel();
+        LevelManager.Instance.SetLevel(LevelManager.MIN_LEVELS);
+    }
+
+    private void InstantiatePrefabObjects()
+    {
         paddleObj = GameObject.Instantiate(paddlePrefab);
         wallColliderObj = GameObject.Instantiate(wallColliderPrefab);
-        LevelManager.Instance.SetBricksForCurrentLevel();
+        uiManagerObj = GameObject.Instantiate(uiManagerPrefab);
     }
 
     public LevelBackground GetLevelBackground()

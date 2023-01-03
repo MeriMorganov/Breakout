@@ -15,18 +15,7 @@ public class LevelManager : BaseBehaviour // Loads the right level
     public int NumOfBricks
         {
         set{
-            if (value < 0)
-            {
-                numOfBricks = 0;
-            }
-            else if (value > BrickMapper.MAX_BRICKS)
-            {
-                numOfBricks = BrickMapper.MAX_BRICKS;
-            }
-            else
-            {
-                numOfBricks = value;
-            }
+            numOfBricks = Mathf.Clamp(value, 0, BrickMapper.MAX_BRICKS);
         }
         get { return numOfBricks; }
         }
@@ -49,7 +38,8 @@ public class LevelManager : BaseBehaviour // Loads the right level
     }
     public void SetLevel(int level)
     {
-        currentLevel = 0;
+        currentLevel = level;
+        UIManager.Instance.SetLevelValue(currentLevel);
     }
 
     public void GoToNextLevel()

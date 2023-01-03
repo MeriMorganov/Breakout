@@ -30,4 +30,14 @@ public class BaseBehaviour : MonoBehaviour // Base class wrapper for all MonoBeh
         }
         return null;
     }
+
+
+    public static int RandomSign()
+    {
+        if (Random.Range(0, 2) == 0)
+        {
+            return -1;
+        }
+        return 1;
+    }
 }

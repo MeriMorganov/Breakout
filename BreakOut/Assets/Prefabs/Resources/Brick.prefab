@@ -48,6 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalBrick: {fileID: 6100886419709491844}
   blockBrick: {fileID: 5469622226151863718}
+  orangeColor: {r: 1, g: 0.513089, b: 0, a: 1}
+  purpleColor: {r: 0.59228414, g: 0, b: 0.8018868, a: 1}
 --- !u!61 &7324151327675937933
 BoxCollider2D:
   m_ObjectHideFlags: 0

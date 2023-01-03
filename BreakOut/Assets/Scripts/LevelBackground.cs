@@ -2,27 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelBackground : BaseBehaviour
+public class LevelBackground : BaseCanvas
 {
-    private string CANVAS_OBJ_NAME = "Canvas";
     private string SPRITERENDERER_OBJ_NAME = "BackgroundImage";
-    private SpriteRenderer spriteRenderer;
-    private Canvas canvas;
 
-    public void Start()
-    {
-        GetCanvas().worldCamera = Camera.main;
-    }
 
-    public Canvas GetCanvas()
-    {
-        if(canvas == null)
-        {
-            canvas = FindInChild(CANVAS_OBJ_NAME).GetComponent<Canvas>();
-        }
-
-        return canvas;
-    }
 
     public SpriteRenderer GetSpriteRenderer()
     {

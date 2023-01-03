@@ -17,10 +17,10 @@ public class Brick : BaseBehaviour // Row of bricks in the level that need to be
 
     public GameObject normalBrick;
     public GameObject blockBrick;
+    public Color orangeColor = new Color(255, 165, 0);
+    public Color purpleColor = new Color(255, 0, 255);
 
     private SpriteRenderer spriteRenderer = null;
-    private Color orangeColor = new Color(255, 165, 0);
-    private Color purpleColor = new Color(255, 0, 255);
 
     public SpriteRenderer GetSpriteRenderer()
     {
