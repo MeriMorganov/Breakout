@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Paddle : BaseBehaviour // PLayer controlled paddle used to hit the ball
+public class Paddle : BaseBehaviour // Player controlled paddle used to hit the ball
 {
     public GameObject ballObj;
     private Ball ball = null;

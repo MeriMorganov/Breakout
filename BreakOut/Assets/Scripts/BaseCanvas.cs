@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseCanvas : BaseBehaviour
+public class BaseCanvas : BaseBehaviour // Base Canvas prefab to avoid boiler plate code
 {
     private string CANVAS_OBJ_NAME = "Canvas";
     protected SpriteRenderer spriteRenderer;

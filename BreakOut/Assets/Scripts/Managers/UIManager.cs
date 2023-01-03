@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIManager : BaseCanvas
+public class UIManager : BaseCanvas // Toggles and shows UI components for the game
 {
     public TextMesh livesValue;
     public TextMesh levelValue;
