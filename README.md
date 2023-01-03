@@ -1,6 +1,6 @@
 # Breakout
 A simple breakout game that loads levels from a file. Currently work in progress. Only level one shows and no build at the moment.
-![ScreenShot](https://raw.github.com/MeriMorganov/Breakut/main/BreakOut/screenshot.png)
+![ScreenShot](https://raw.github.com/MeriMorganov/Breakout/main/BreakOut/screenshot.png)
 
 ## PSD
 This folder contains my photoshop projects that I used to draw the images for the game. 
