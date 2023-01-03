@@ -6,6 +6,12 @@ A simple breakout game that loads levels from a file. Currently work in progress
 ## PSD
 This folder contains my photoshop projects that I used to draw the images for the game. 
 
+## Assets
+This folder contains the core of the project. The scripts, images and other files
+
+## Assets/Scripts
+This is where the C# code is kept.
+
 ## About
 
 These projects are used to showcase my portfolio as a Software Engineer with a bit of an art side.  
