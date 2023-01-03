@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class UIManager : BaseCanvas // Toggles and shows UI components for the game
 {
-    public TextMesh livesValue;
-    public TextMesh levelValue;
+    public TextMesh livesValue; // Shows the lives counter
+    public TextMesh levelValue; // Shows the current level
     private static UIManager instance;
 
     public static UIManager Instance

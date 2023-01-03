@@ -5,8 +5,8 @@ using UnityEngine;
 public class BallPhysics : BaseBehaviour // Checks and handles the physics side of the ball
 {
     private const float MIN_SPEED_THRESHOLD = 2.0f; // To prevent the ball from going really slow
-    private const float MAX_SPEED_THRESHOLD = 3.0f;
-    private float minSpeedMulti = 1.5f;
+    private const float MAX_SPEED_THRESHOLD = 3.0f; // To prevent the ball from going really fast
+    private float minSpeedMulti = 1.5f; // Speed up the ball by this multiplier when it's too slow
     private Rigidbody2D rigidbody2D;
     private Vector2 prevVelocity;
     private Ball ball = null;

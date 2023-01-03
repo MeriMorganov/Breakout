@@ -5,9 +5,9 @@ using UnityEngine;
 public class Ball : BaseBehaviour // The ball that bounces in the level hit by the paddle
 {
     private float speed = 2.8f;
-    private float xOffset = 0.3f;
-    private bool launched = false;
-    private bool died = false;
+    private float xOffset = 0.3f; // Tilt the ball a bit to make it not just go straight up
+    private bool launched = false; // Did the player launch the ball from the paddle
+    private bool died = false; // Did the ball fall down
     private BallPhysics ballPhysics = null;
    
 

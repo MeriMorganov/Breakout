@@ -51,7 +51,7 @@ public class BrickMapper: BaseBehaviour // Layout the bricks for the level based
         return str;
     }
 
-    public void LoadAllLevels(int maxLevels, string levelPrefix)
+    public void LoadAllLevels(int maxLevels, string levelPrefix) // Populate the array of maps from which we will build levels out of
     {
         for(int i = 0;i < maxLevels; i++)
         {
@@ -64,7 +64,7 @@ public class BrickMapper: BaseBehaviour // Layout the bricks for the level based
         brick.transform.position = new Vector3(x, y, 0);
         return brick;
     }
-    public void InstantiateBrickPool()
+    public void InstantiateBrickPool() // Create the max number of bricks ready to be used or hidden for now
     {
         int row = 0;
         int col = 0;
@@ -82,7 +82,7 @@ public class BrickMapper: BaseBehaviour // Layout the bricks for the level based
 
         transform.position = new Vector3(POS_X, POS_Y, 0);
     }
-    public void ConstructLevel(int level)
+    public void ConstructLevel(int level) // Based on the string with the codes, build the current level
     {
         int levelIndex = level - 1;
         int currentBrick = 0;

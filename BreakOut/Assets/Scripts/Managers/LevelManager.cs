@@ -12,7 +12,7 @@ public class LevelManager : BaseBehaviour // Loads the right level
     private int numOfBricks = 0;
     private static LevelManager instance;
 
-    public int NumOfBricks
+    public int NumOfBricks // How many bricks are left in the level
         {
         set{
             numOfBricks = Mathf.Clamp(value, 0, BrickMapper.MAX_BRICKS);
