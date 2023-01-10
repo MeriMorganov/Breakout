@@ -6,4 +6,5 @@ public class Inputs
 {
     public const string HORIZONTAL = "Horizontal";
     public const KeyCode LAUNCH_BALL =KeyCode.Space;
+    public const KeyCode START_PAUSE = KeyCode.Return;
 }

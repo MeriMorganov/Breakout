@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class UIManager : BaseCanvas // Toggles and shows UI components for the game
+public class UIManager : BaseBehaviour // Toggles and shows UI components for the game
 {
-    public TextMesh livesValue; // Shows the lives counter
-    public TextMesh levelValue; // Shows the current level
+    public Text livesValue; // Shows the lives counter
+    public Text levelValue; // Shows the current level
+    public Text StartPopupLevelValue;
+    public GameObject background;
+    public GameObject startPopup;
     private static UIManager instance;
 
     public static UIManager Instance
@@ -34,5 +38,26 @@ public class UIManager : BaseCanvas // Toggles and shows UI components for the g
     public void SetLevelValue(int value)
     {
         levelValue.text = value.ToString();
+        StartPopupLevelValue.text = value.ToString();
     }
+
+    public void UpdateStartPopup()
+    {
+
+        if(GameManager.Instance.GetGameMode() == GameManager.GameMode.Pause)
+        {
+            ShowStartPopup(true);
+        }
+        else
+        {
+            ShowStartPopup(false);
+        }
+    }
+
+    public void ShowStartPopup(bool show)
+    {
+        background.SetActive(show);
+        startPopup.SetActive(show);
+    }
+
 }

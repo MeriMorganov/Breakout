@@ -9,6 +9,7 @@ public class BallPhysics : BaseBehaviour // Checks and handles the physics side 
     private float minSpeedMulti = 1.5f; // Speed up the ball by this multiplier when it's too slow
     private Rigidbody2D rigidbody2D;
     private Vector2 prevVelocity;
+    private Vector2 pausedVelocity; //The last velocity when the player pauses
     private Ball ball = null;
 
     public void Start()
@@ -17,11 +18,13 @@ public class BallPhysics : BaseBehaviour // Checks and handles the physics side 
     }
     public void FixedUpdate()
     {
-        if (GetBall().IsLaunched())
+        if (GameManager.Instance.GetGameMode() == GameManager.GameMode.Play)
         {
-            prevVelocity = GetRBRangedVelocity();
+            if (GetBall().IsLaunched())
+            {
+                prevVelocity = GetRBRangedVelocity();
+            }
         }
-
     }
     public void OnCollisionEnter2D(Collision2D collision)
     {
@@ -90,6 +93,20 @@ public class BallPhysics : BaseBehaviour // Checks and handles the physics side 
         }
 
         return GetRigidBody().velocity;
+    }
+
+    public void UpdateRBSleep() // Update the ball velocity based on if the player paused or not
+    {
+        if(GameManager.Instance.GetGameMode() == GameManager.GameMode.Pause)
+        {
+            pausedVelocity = GetRigidBody().velocity;
+            GetRigidBody().Sleep();
+        }
+        else if(GameManager.Instance.GetGameMode() == GameManager.GameMode.Play)
+        {
+            GetRigidBody().WakeUp();
+            GetRigidBody().velocity = pausedVelocity;
+        }
     }
 }
 

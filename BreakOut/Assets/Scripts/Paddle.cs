@@ -29,8 +29,12 @@ public class Paddle : BaseBehaviour // Player controlled paddle used to hit the 
 
     public void Update()
     {
-        MovePaddle();
-        UpdateBallStatus();
+        if (GameManager.Instance.GetGameMode() == GameManager.GameMode.Play)
+        {
+            MovePaddle();
+            UpdateBallStatus();
+        }
+        CheckForPausePlay();
     }
     private void MovePaddle() // User input to move the paddle
     {
@@ -67,6 +71,15 @@ public class Paddle : BaseBehaviour // Player controlled paddle used to hit the 
             SetBallToPaddle();
         }
     }
+
+    private void CheckForPausePlay()
+    {
+        if (Input.GetKeyUp(Inputs.START_PAUSE))
+        {
+            GameManager.Instance.TogglePausePlay();
+            GetBall().GetBallPhysics().UpdateRBSleep();
+        }
+     }
 
     private void SetBallToPaddle()
     {

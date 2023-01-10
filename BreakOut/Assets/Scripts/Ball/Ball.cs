@@ -26,7 +26,7 @@ public class Ball : BaseBehaviour // The ball that bounces in the level hit by t
         died = false;
     }
 
-    private BallPhysics GetBallPhysics()
+    public BallPhysics GetBallPhysics()
     {
         if (ballPhysics == null)
         {
