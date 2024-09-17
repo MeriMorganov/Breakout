@@ -61,6 +61,7 @@ public class GameManager : BaseBehaviour // Manages the whole game
         paddle?.GetBall()?.GetBallPhysics()?.UpdateRBSleep();
         LevelManager.Instance.SetBricksForCurrentLevel();
         SetBackgroundImage();
+        UIManager.Instance.SetLivesValue(START_LIVES);
     }
 
 
