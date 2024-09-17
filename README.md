@@ -1,5 +1,5 @@
 # Breakout
-A simple breakout game that loads levels from a file. Currently work in progress. Only level one shows and no build at the moment.
+A simple breakout game that loads levels from a file.
 
 ![ScreenShot](https://raw.github.com/MeriMorganov/Breakout/main/BreakOut/Screenshot.png)
 
