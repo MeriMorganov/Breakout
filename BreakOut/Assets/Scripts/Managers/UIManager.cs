@@ -10,6 +10,8 @@ public class UIManager : BaseBehaviour // Toggles and shows UI components for th
     public Text StartPopupLevelValue;
     public GameObject background;
     public GameObject startPopup;
+    public GameObject winPopup;
+    public GameObject losePopup;
     private static UIManager instance;
 
     public static UIManager Instance
@@ -46,18 +48,34 @@ public class UIManager : BaseBehaviour // Toggles and shows UI components for th
 
         if(GameManager.Instance.GetGameMode() == GameManager.GameMode.Pause)
         {
+            ShowWinPopup(false);
+            ShowLosePopup(false);
             ShowStartPopup(true);
         }
         else
         {
             ShowStartPopup(false);
+            ShowWinPopup(false);
+            ShowLosePopup(false);
         }
     }
 
     public void ShowStartPopup(bool show)
     {
-        background.SetActive(show);
-        startPopup.SetActive(show);
+        background?.SetActive(show);
+        startPopup?.SetActive(show);
+    }
+
+    public void ShowWinPopup(bool show)
+    {
+        background?.SetActive(show);
+        winPopup?.SetActive(show);
+    }
+
+    public void ShowLosePopup(bool show)
+    {
+        background?.SetActive(show);
+        losePopup?.SetActive(show);
     }
 
 }

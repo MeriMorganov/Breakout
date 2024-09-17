@@ -84,33 +84,36 @@ public class BrickMapper: BaseBehaviour // Layout the bricks for the level based
     }
     public void ConstructLevel(int level) // Based on the string with the codes, build the current level
     {
-        int levelIndex = level - 1;
-        int currentBrick = 0;
-        LevelManager.Instance.NumOfBricks = 0;
-        string currentBrickMap = brickMaps[levelIndex];
-        foreach (char brickKey in currentBrickMap)
+        if (level <= LevelManager.MAX_LEVELS)
         {
-            if (brickKey == NO_BRICK)
+            int levelIndex = level - 1;
+            int currentBrick = 0;
+            LevelManager.Instance.NumOfBricks = 0;
+            string currentBrickMap = brickMaps[levelIndex];
+            foreach (char brickKey in currentBrickMap)
             {
-                brickObjects[currentBrick].SetActive(false);
-            }
-            else
-            {
-                brickObjects[currentBrick].SetActive(true);
-                LevelManager.Instance.NumOfBricks++;
-                if (brickKey == BLOCK_BRICK)
+                if (brickKey == NO_BRICK)
                 {
-                    bricks[currentBrick].ToggleNormalBrick(false);
-                    bricks[currentBrick].ToggleBlockBrick(true);
+                    brickObjects[currentBrick].SetActive(false);
                 }
                 else
                 {
-                    bricks[currentBrick].ToggleNormalBrick(true);
-                    bricks[currentBrick].ToggleBlockBrick(false);
-                    SetBrickColor(currentBrick, brickKey);
+                    brickObjects[currentBrick].SetActive(true);
+                    LevelManager.Instance.NumOfBricks++;
+                    if (brickKey == BLOCK_BRICK)
+                    {
+                        bricks[currentBrick].ToggleNormalBrick(false);
+                        bricks[currentBrick].ToggleBlockBrick(true);
+                    }
+                    else
+                    {
+                        bricks[currentBrick].ToggleNormalBrick(true);
+                        bricks[currentBrick].ToggleBlockBrick(false);
+                        SetBrickColor(currentBrick, brickKey);
+                    }
                 }
+                currentBrick++;
             }
-            currentBrick++;
         }
     }
 

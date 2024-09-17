@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
+using static UnityEngine.Rendering.VirtualTexturing.Debugging;
 using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 public class GameManager : BaseBehaviour // Manages the whole game
@@ -34,6 +36,7 @@ public class GameManager : BaseBehaviour // Manages the whole game
 
     private GameObject backgroundObj;
     private GameObject paddleObj;
+    private Paddle paddle;
     private GameObject wallColliderObj;
     public GameObject uiManagerObj;
     public LevelBackground levelBackground;
@@ -42,20 +45,39 @@ public class GameManager : BaseBehaviour // Manages the whole game
     {
         GetBackgroundObj();
         GetLevelBackground();
-        SetBackgroundImage();
+        GetPaddle();
         InstantiatePrefabObjects();
         BrickMapper.Instance.InstantiateBrickPool();
         BrickMapper.Instance.LoadAllLevels(LevelManager.MAX_LEVELS, LevelManager.LEVEL_PREFIX);
-        LevelManager.Instance.SetBricksForCurrentLevel();
         LevelManager.Instance.SetLevel(LevelManager.MIN_LEVELS);
+        InitGame();
         UIManager.Instance.UpdateStartPopup();
     }
+
+    public void InitGame()
+    {
+        SetGameMode(GameManager.GameMode.Pause);
+        GetPaddle()?.SetBallToPaddle();
+        paddle?.GetBall()?.GetBallPhysics()?.UpdateRBSleep();
+        LevelManager.Instance.SetBricksForCurrentLevel();
+        SetBackgroundImage();
+    }
+
 
     private void InstantiatePrefabObjects()
     {
         paddleObj = GameObject.Instantiate(paddlePrefab);
         wallColliderObj = GameObject.Instantiate(wallColliderPrefab);
         uiManagerObj = GameObject.Instantiate(uiManagerPrefab);
+    }
+
+    public Paddle GetPaddle()
+    {
+        if(paddle == null)
+        {
+            paddle = paddleObj?.GetComponent<Paddle>();
+        }
+        return paddle;
     }
 
     public LevelBackground GetLevelBackground()
@@ -78,7 +100,10 @@ public class GameManager : BaseBehaviour // Manages the whole game
     public void SetBackgroundImage()
     {
         Sprite backgroundSprite = Resources.Load<Sprite>(LevelManager.Instance.GetBackgroundPath());
-        GetLevelBackground().SetBackgroundSprite(backgroundSprite);
+        if (backgroundSprite != null)
+        {
+            GetLevelBackground().SetBackgroundSprite(backgroundSprite);
+        }
     }
 
     public void TogglePausePlay()
@@ -90,5 +115,10 @@ public class GameManager : BaseBehaviour // Manages the whole game
     public GameMode GetGameMode()
     {
         return gamemode;
+    }
+
+    public void SetGameMode(GameMode mode)
+    {
+        gamemode = mode;
     }
 }

@@ -44,7 +44,10 @@ public class BallPhysics : BaseBehaviour // Checks and handles the physics side 
                     break;
 
             }
-            GetRigidBody().velocity = Vector2.Reflect(prevVelocity, contactPoint.normal);
+            if (!LevelManager.Instance.CheckIfLevelFinished())
+            {
+                GetRigidBody().velocity = Vector2.Reflect(prevVelocity, contactPoint.normal);
+            }
         }
 
     }

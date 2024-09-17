@@ -68,6 +68,11 @@ public class Paddle : BaseBehaviour // Player controlled paddle used to hit the 
         {
             CurrentLives--;
             UIManager.Instance.SetLivesValue(CurrentLives);
+            if (LevelManager.Instance.CheckIfOutOfLives(CurrentLives))
+            {
+                currentLives = GameManager.START_LIVES;
+                UIManager.Instance.SetLivesValue(CurrentLives);
+            }
             SetBallToPaddle();
         }
     }
@@ -81,7 +86,7 @@ public class Paddle : BaseBehaviour // Player controlled paddle used to hit the 
         }
      }
 
-    private void SetBallToPaddle()
+    public void SetBallToPaddle()
     {
         GetBall().StopBall();
         ballObj.transform.parent = this.transform;
@@ -90,11 +95,13 @@ public class Paddle : BaseBehaviour // Player controlled paddle used to hit the 
 
     private void LaunchBall()
     {
+        UIManager.Instance.ShowWinPopup(false);
+        UIManager.Instance.ShowLosePopup(false);
         ballObj.transform.parent = null;
         GetBall().LaunchBall();
     }
 
-    private Ball GetBall()
+    public Ball GetBall()
     {
         if(ball == null)
         {
